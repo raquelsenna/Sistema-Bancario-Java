@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        OperacaoBancaria operacao = new OperacaoBancaria();
         Scanner input = new Scanner(System.in);
 
-        double balance = 2500.50;
-        double withdraw;
-        double deposit;
         int answer;
+        double valorSaque;
+        double valorDeposito;
 
         String menu = """
                 =====MENU=====
@@ -24,27 +24,27 @@ public class Main {
             System.out.println(menu);
             answer = input.nextInt();
 
-            if (answer == 1) {
-                System.out.println("Saldo: R$" + balance);
+            if(answer == 1) {
+                operacao.getSaldo();
 
-            } else if (answer == 2) {
+            } else if(answer == 2) {
                 System.out.println("Saque: ");
-                withdraw = input.nextDouble();
+                valorSaque = input.nextDouble();
 
-                if ((balance - withdraw) < 0) {
-                    System.out.println("Saldo insuficiente");
+                if(operacao.checkSaldo(valorSaque)) {
+                    System.out.println("Valor de saque invalido!");
                 } else {
-                    balance -= withdraw;
+                    operacao.saque(valorSaque);
                 }
 
             } else if (answer == 3) {
                 System.out.println("Deposito: ");
-                deposit = input.nextDouble();
+                valorDeposito = input.nextDouble();
 
-                if (deposit < 0) {
+                if (valorDeposito < 0) {
                     System.out.println("Deposito invalido");
                 } else {
-                    balance += deposit;
+                    operacao.deposito(valorDeposito);
                 }
 
 
