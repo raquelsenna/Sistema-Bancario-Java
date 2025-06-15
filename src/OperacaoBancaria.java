@@ -1,9 +1,23 @@
 public class OperacaoBancaria {
-    double saldo = 2500.50;
+    private double saldo = 2500.50;
+    private double saque;
+    private double deposito;
 
 
-    void getSaldo() {
-        System.out.println("Saldo: " + saldo);
+    public void getSaldo() {
+        System.out.println("Saldo: " + this.saldo);
+    }
+
+
+    public void setSaque(double valor) {
+        this.saque = valor;
+        saque();
+    }
+
+
+    public void setDeposito(double valor) {
+        this.deposito = valor;
+        deposito();
     }
 
 
@@ -16,12 +30,12 @@ public class OperacaoBancaria {
     }
 
 
-    void saque(double valor) {
-        saldo -= valor;
+    private void saque() {
+        this.saldo -= this.saque;
     }
 
 
-    void deposito(double valor) {
-        saldo += valor;
+    private void deposito() {
+        this.saldo += this.deposito;
     }
 }

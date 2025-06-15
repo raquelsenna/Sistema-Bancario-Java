@@ -34,7 +34,7 @@ public class Main {
                 if(operacao.checkSaldo(valorSaque)) {
                     System.out.println("Valor de saque invalido!");
                 } else {
-                    operacao.saque(valorSaque);
+                    operacao.setSaque(valorSaque);
                 }
 
             } else if (answer == 3) {
@@ -42,9 +42,9 @@ public class Main {
                 valorDeposito = input.nextDouble();
 
                 if (valorDeposito < 0) {
-                    System.out.println("Deposito invalido");
+                    System.out.println("Deposito invalido!");
                 } else {
-                    operacao.deposito(valorDeposito);
+                    operacao.setDeposito(valorDeposito);
                 }
 
 
