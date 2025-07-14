@@ -1,3 +1,4 @@
+import br.com.raquel.sistemabancario.model.OperacaoBancaria;
 import java.util.Scanner;
 
 public class Main {
@@ -5,50 +6,40 @@ public class Main {
         OperacaoBancaria operacao = new OperacaoBancaria();
         Scanner input = new Scanner(System.in);
 
-        int answer;
+        int resposta;
         double valorSaque;
         double valorDeposito;
 
         String menu = """
                 =====MENU=====
-                
                 [1] Saldo
                 [2] Saque
                 [3] Deposito
                 [4] Sair
-                
                 ==============
                 """;
 
         while (true) {
             System.out.println(menu);
-            answer = input.nextInt();
+            resposta = input.nextInt();
 
-            if(answer == 1) {
-                operacao.getSaldo();
+            if(resposta == 1) {
+                System.out.printf("Saldo: R$ %.2f\n", operacao.getSaldo());
 
-            } else if(answer == 2) {
+            } else if(resposta == 2) {
                 System.out.println("Saque: ");
                 valorSaque = input.nextDouble();
 
-                if(operacao.checkSaldo(valorSaque)) {
-                    System.out.println("Valor de saque invalido!");
-                } else {
-                    operacao.setSaque(valorSaque);
-                }
+                operacao.operacaoSacar(valorSaque);
 
-            } else if (answer == 3) {
+
+            } else if (resposta == 3) {
                 System.out.println("Deposito: ");
                 valorDeposito = input.nextDouble();
 
-                if (valorDeposito < 0) {
-                    System.out.println("Deposito invalido!");
-                } else {
-                    operacao.setDeposito(valorDeposito);
-                }
+                operacao.operacaoDepositar(valorDeposito);
 
-
-            } else if (answer == 4) {
+            } else if (resposta == 4) {
                 System.out.println("Operacao Finalizada!");
                 break;
 
